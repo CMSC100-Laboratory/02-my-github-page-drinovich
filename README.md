@@ -1,5 +1,5 @@
 ## About Me
-Name: Aldrin Marcus T. Loudlow
+Name: Aldrin Marcus T. Loudlow  
 Degree Program: Bachelor of Science in Computer Science
 
 ## Live Website Link
