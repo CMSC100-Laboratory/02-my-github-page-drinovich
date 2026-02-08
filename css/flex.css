@@ -1,0 +1,76 @@
+/* index.html */
+#home-body {
+    background-image: url("https://eip.gg/wp-content/uploads/2024/06/Until-Then-Nicole-and-Mark.jpg");
+    background-size: cover;
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+    border-radius: 25px;
+    margin: 300px;
+    padding: 0px;
+    overflow: hidden;
+
+    background-color: rgba(0, 0, 0, 0.65);
+    color: white;
+
+    position: relative;
+    animation-duration: 3s;
+    animation-name: box-animation;
+    animation-fill-mode: forwards;
+}
+
+#hh1 {
+    padding-top: 30px;
+    margin-bottom: 0px;
+
+    font-family: "Press Start 2P", sans-serif;
+    font-weight: 100;
+    font-size: 25px;
+}
+
+#hh1:hover {
+    color: silver;;
+    transition: 3s;
+}
+
+#hh2 {
+    padding-bottom: 0px;
+    margin-top: 0px;
+
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 23px;
+}
+
+#aboutBTN {
+    display: block;
+    border-radius: 15px;
+    padding: 10px;
+    margin-bottom: 40px;
+    width: 400px;
+    position: relative;
+
+    background-color: white;
+
+    color: rgb(46, 28, 114);
+    font-family: "Press Start 2P", sans-serif;
+    font-weight: 100;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+@keyframes box-animation {
+    0% {
+        top: -500px;
+        opacity: 0%;
+    }
+    100% {
+        top: 0px;
+        opacity: 100%;
+    }
+}
+
+/* about.html */
