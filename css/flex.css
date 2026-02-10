@@ -1,18 +1,8 @@
 /* Animation */
-@keyframes load {
-    0% {
-        background-color: rgba(0, 0, 0, 0.95);
-        background-blend-mode: darken;
-    }
-    100% {
-        background-color: rgba(0, 0, 0, 0.70);
-    }
-}
-
 @keyframes dropdown {
     0% {
         top: -500px;
-        opacity: 0%;
+        opacity: 25%;
     }
     100% {
         top: 0px;
@@ -33,13 +23,11 @@
     }
 }
 
-@keyframes slide {
+@keyframes in {
     0% {
-        left: -500px;
-        opacity: 0%;
+        opacity: 25%;
     }
     100% {
-        left: 0px;
         opacity: 100%;
     }
 }
@@ -71,20 +59,31 @@
     }
 }
 
-@keyframes changeBG {
+@keyframes changeBG1 {
     0% {
-        background-image: url('../images/background2.webp');
+        background-image: url('../images/bg/background2.webp');
     }
     100% {
-        background-image: url('../images/background1.jpg');
+        background-image: url('../images/bg/background3.webp');
+    }
+}
+
+@keyframes changeBG2 {
+    0% {
+        background-image: url('../images/bg/background3.webp');
+        background-color: rgba(0, 0, 0, 0.90);
+        background-blend-mode: darken;
+    }
+    100% {
+        background-image: url('../images/bg/background2.webp');
+        background-color: rgba(0, 0, 0, 0.70);
     }
 }
 
 
-
 /* index.html */
-#home-body {
-    background-image: url('../images/background1.jpg');
+#home-body { 
+    background-image: url('../images/bg/background1.jpg');
     background-position: center;
     background-size: cover;
     background-color: rgba(0, 0, 0, 0);
@@ -94,7 +93,7 @@
     transition: background-color 2s ease-out;
 }
 
-.container1 {
+#container1 {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -167,7 +166,7 @@
     transition-duration: 2s;
 }
 
-.container1:has(.aboutBTN:hover) {
+#container1:has(.aboutBTN:hover) {
     background-color: rgba(0, 0, 0, 0.25) ;
     color: rgb(156, 156, 156, 0.25);
     transition-duration: 2s;
@@ -177,21 +176,16 @@
 
 /* about.html */
 #about-body {
-    background-image: url('../images/background2.webp');
+    background-image: url('../images/bg/background2.webp');
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.50);
     background-blend-mode: darken;
     overflow: hidden;
 
     animation-duration: 3s;
-    animation-name: load;
+    animation-name: changeBG2;
     animation-fill-mode: forwards;
     transition: opacity 2s ease-out;
-}
-
-#about-body:has(.link:hover:not(p)) {
-    opacity: 25%;
-    transition-duration: 2s;
 }
 
 #about-header {
@@ -203,12 +197,17 @@
     position: relative;
 
     animation-duration: 2s;
-    animation-name: dropdown;
+    animation-name: in;
     animation-fill-mode: forwards;
 }
 
-#about-header p {
+header p {
     margin: 0px;
+}
+
+#about-body:has(.link:hover:not(p)) {
+    opacity: 25%;
+    transition-duration: 2s;
 }
 
 .link {
@@ -229,16 +228,15 @@
 }
 
 .link:hover {
-    opacity: 100% !important;
+    opacity: 100%;
     color: rgb(255, 255, 255);
     transition-duration: 1s;
 }
 
-.container2 {
+#container2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Bababooey */
 }
 
 .aboutME {
@@ -273,21 +271,37 @@
     animation-fill-mode: forwards;
 }
 
-.imageCTN .me1, .imageCTN .me2 {
+.secret {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    opacity: 0%;
+
+    animation-duration: 5s;
+    animation-name: me-jumpscare;
+    animation-fill-mode: forwards;
+    transition: opacity 1s ease-out;
+}
+
+.imageCTN .me1, .imageCTN .me2, .imageCTN .secret {
     position: absolute;
     transition: opacity 1s ease-out;
 }
 
 .imageCTN .me2 {
-    opacity: 0;
+    opacity: 0%;
+}
+
+.imageCTN .secret {
+    opacity: 0%;
 }
 
 .imageCTN:hover .me1 {
-    opacity: 0;
+    opacity: 0%;
 }
 
 .imageCTN:hover .me2 {
-    opacity: 1;
+    opacity: 100%;
 }
 
 #ah1 {
@@ -304,8 +318,57 @@
     text-align: center;
 
     animation-duration: 5s;
-    animation-name: slide;
+    animation-name: in;
     animation-fill-mode: forwards;
+}
+
+#dood {
+    position: relative;
+    color: rgb(255, 255, 255);
+
+    transition: color 2s ease-out;
+}
+
+#hidden {
+    background-color: rgb(0, 0, 0, 0.5);
+    width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 50px;
+    left: 50%;
+    margin-left: -60px;
+
+    font-size: 10px;
+    color: white;
+    opacity: 0%;
+
+    transition: opacity 1s ease-out;
+}
+
+#dood:hover {
+    color: rgb(205, 90, 90);
+
+    animation-duration: 2s;
+    animation-name: rainbow;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    transition-duration: 2s;
+}
+
+#dood:hover #hidden {
+    opacity: 100%;
+
+    transition-duration: 1s;
+}
+
+#dood:hover .secret {
+    opacity: 100%;
+
+    transition-duration: 1s;
 }
 
 #ap1 {
@@ -322,13 +385,12 @@
     line-height: 25px;
 
     animation-duration: 5s;
-    animation-name: slide;
+    animation-name: in;
     animation-fill-mode: forwards;
 }
 
 #hort {
     color: rgb(205, 90, 90);
-    font-size: 16px;
 
     transition: color 2s ease-out;
 }
@@ -348,14 +410,14 @@
 
 /* portfolio.html */
 #portfolio-body {
-    background-image: url('../images/background2.webp');
+    background-image: url('../images/bg/background3.webp');
     background-size: cover;
-    background-color: rgba(0, 0, 0, 0.50);
+    background-color: rgba(0, 0, 0, 0.60);
     background-blend-mode: darken;
-    overflow: hidden;
+    overflow-x: hidden;
 
     animation-duration: 3s;
-    animation-name: changeBG;
+    animation-name: changeBG1;
     animation-fill-mode: forwards;
     transition: opacity 2s ease-out; 
 }
@@ -372,8 +434,149 @@
     height: 50px;
     margin: -10px;
     position: relative;
+
+    animation-duration: 2s;
+    animation-name: in;
+    animation-fill-mode: forwards;
 }
 
-#portfolio-header p {
+header p {
     margin: 0px;
+}
+
+#container3 {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.55);
+    height: 650px;
+    border-radius: 25px;
+    padding: 20px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+
+    animation-duration: 5s;
+    animation-name: in;
+    animation-fill-mode: forwards;
+}
+
+#ph1 {
+    margin-bottom: 5px;
+
+    color: white;
+    font-family: "Press Start 2P", sans-serif;
+    font-weight: normal;
+    font-size: 30px;
+}
+
+#sphan {
+    top: -5px;
+    position: relative;
+
+    color: white;
+    font-family: "Press Start 2P", sans-serif;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+#portfolio {
+    display: flex;
+    flex-direction: row;
+    height: 350px;
+}
+
+#portfolio img {
+    padding: 20px;
+}
+
+.asmng1, .asmng2, .asmng3 {
+    position: relative;
+
+    width: 604.8px;
+    height: 307.8px;
+    border-radius: 50px;
+
+    transition: width 2s, height 2s ease-out;
+}
+
+.asmng1:hover, .asmng2:hover, .asmng3:hover {
+    width: 672px;
+    height: 323.19px;
+
+    transition-duration: 2s;
+}
+
+.asmng4 {
+    position: relative;
+
+    width: 25%;
+    height: 25%;
+    border-radius: 50px;
+
+    transition: width 2s, height 2s ease-out;
+}
+
+.asmng4:hover {
+    width: 30%;
+    height: 30%;
+
+    transition-duration: 2s;
+}
+
+.asmng5 {
+    position: relative;
+
+    width: 30%;
+    height: 30%;
+    border-radius: 50px;
+
+    transition: width 2s, height 2s ease-out;
+}
+
+.asmng5:hover {
+    width: 35%;
+    height: 35%;
+
+    transition-duration: 2s;
+}
+
+.asmng6 {
+    position: relative;
+
+    width: 15%;
+    height: 15%;
+    border-radius: 50px;
+
+    transition: width 2s, height 2s ease-out;
+}
+
+.asmng6:hover {
+    width: 20%;
+    height: 20%;
+
+    transition-duration: 2s;
+}
+
+.asmng7 {
+    position: relative;
+
+    width: 15%;
+    height: 15%;
+    border-radius: 50px;
+
+    transition: width 2s, height 2s ease-out;
+}
+
+.asmng7:hover {
+    width: 20%;
+    height: 20%;
+
+    transition-duration: 2s;
+}
+
+#pp1 {
+    color: white;
+    font-family: "Press Start 2P", sans-serif;
+    font-weight: normal;
+    font-size: 17px;
+    line-height: 40px;
 }
