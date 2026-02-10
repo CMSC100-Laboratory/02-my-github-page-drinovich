@@ -365,7 +365,7 @@ header p {
     transition-duration: 1s;
 }
 
-#dood:hover .secret {
+#about-body:has(#dood:hover) .secret {
     opacity: 100%;
 
     transition-duration: 1s;
